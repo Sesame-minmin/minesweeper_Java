@@ -13,6 +13,7 @@ import javax.swing.JPanel;
  */
 public class MainPane extends JPanel {
 	public MainPane() {
+		//マインスイーパーオンラインっぽく改造する
 		setLayout(new FlowLayout());
 		add(new JLabel("Hello"));
 		add(new JLabel("Java"));

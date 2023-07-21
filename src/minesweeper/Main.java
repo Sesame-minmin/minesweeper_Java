@@ -12,7 +12,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 public class Main extends JPanel {
-	public static final int N = 8; // board size N x N cells
+	public static final int N = 10; // board size N x N cells
+	//配列で難易度を調整したい。
 	public static final int M = N; // #mines
 	public static final int S = 16; // cell size
 
@@ -27,7 +28,8 @@ public class Main extends JPanel {
 	int winner = NONE;  // one of NONE, PLAYER, ENEMY
 
 	public Main() {
-		setMines();
+		
+		
 
 		JPanel canvas = new JPanel() {
 			@Override
@@ -46,9 +48,12 @@ public class Main extends JPanel {
 			}
 		};
 		canvas.setFocusable(true);
+		//マウスの右クリック挙動ってどっからやるの？()
 		canvas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				//setMines();
+				//最初にクリックした時だけボムを生成したい。
 				int x = e.getX() / S;
 				int y = e.getY() / S;
 				if (!isOnBoard(x, y))
@@ -101,6 +106,7 @@ public class Main extends JPanel {
 			mines[y][x] = isMine;
 	}
 
+	//周りにいくつボムがあるか
 	int getCounts(int x, int y) {
 		int c = 0;
 		for (int dy = -1; dy <= 1; dy++) {
